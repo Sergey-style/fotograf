@@ -1,0 +1,1032 @@
+
+
+*{
+	padding:0;
+	margin:0;
+	border:0;
+}
+*,*:before,*:after{
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+:fokus,:active{outline:none;}
+a:focus,a:active{outline:none;}
+
+nav,footer,header,aside{display:block;}
+html,body{
+	height:100%;
+	width:100%;
+	font-size:100%;
+	line-height:1;
+	font-size:14px;
+	-ms-text-size-adjust:100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display:none;}
+button{cursor:pointer;}
+button::-moz-fokus-inner{padding:0;border:0;}
+a,a:visited{text-decoration:none;}
+a:hover{text-decoration:none;}
+ul li{list-style:none;}
+img{vertical-align:top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:400}
+/*стили для демонстрации*/
+*,*:before,*:after{
+	padding:0;
+	margin:0;
+	border:0;
+	box-sizing:border-box;
+}
+font-family: 'Bebas Neue', cursive;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Lato', sans-serif;
+font-family: 'Bebas Neue', sans-serif;
+font-family: 'Playfair Display', serif;
+
+html,body{
+	height: 100%;
+}
+body{
+
+}
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+.content{
+	flex: 1 1 auto;
+}
+
+/*основные стили*/
+.container {/*ограничеваем наш контэйнер(текст,лого,меню) по ширине*/
+	max-width: 1176px;
+	margin: 0px auto;
+	padding: 0px 10px;
+}
+
+.header {
+	position: fixed; /*фиксация плашки на верху*/
+	width:100%;
+	top: 0 ;
+	left: 0;
+	z-index: 50;
+}
+.header:before{/*оформление плашки на которой находятся логтип,меню,бургер*/
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #15263e;
+	z-index: 2;
+}
+
+.header_body {/*логтип,меню,бургер*/
+	position: relative;
+	display: flex;/*буквы поднимаются и заезжают на логотип*/
+	height: 110px;/*плашка  110px*/
+	align-items: center;/*выстраеваем контент по горизонтале*/
+	
+}
+
+.header_burger {/*скрываем бургер для размеров выше 767px*/
+   display: none;
+}
+
+.header_list {
+	display: flex;/*колонка с меню превращается в строку и она помещается на плашке*/
+	position: relative;
+	z-index: 2;
+}
+.header_list li{/*отступ между словами в меню*/
+	list-style: none;
+	margin: 0 0 0 50px;
+}
+.header_link {/*оформление меню(слов)*/
+	font-family: 'Avant Garde CE - Demi';
+   font-size: 26px;
+   font-weight: 400;
+   text-transform: uppercase;
+   letter-spacing: 0.075em;
+   color: #ffffff;
+}
+.header_link:hover {/*оформление меню(слов)*/
+	color: gold;
+}
+.content {/*отступ текста от шапки сайта*/
+	padding: 100px 0 0 0;
+}
+
+@media (max-width: 1300px){
+body.lock{/*блокируется скрол под выехавшем меню*/
+   overflow: hidden;
+}
+.header_body{/*высота плашки уменьшаем до 60px*/
+   height: 60px;
+}
+.header_logo{
+   font-size: 10px;
+   line-height: 10px;
+}
+.header_logo img{/*уменьшаем лого до 90px*/
+  	max-width: 90px;
+	display: block;/*картинка будет без подрезания*/
+}
+.header_burger{
+	display: block;
+	position: relative;
+	width: 30px;/*размеры меню бургер*/
+	height: 20px;/*размеры меню бургер*/
+   z-index: 3;
+}
+
+.header_burger span{/*рисуем меню бургер, средняя полоса бургера*/
+	position: absolute;
+	background-color: #fff;
+	width: 100%;
+	height: 2px;
+	left: 0;
+	top: 9px;/*поднимаем на 9px нашу полоску*/
+	transition: all 0.3s ease 0s;/*добавляет анимацию-бургер медленно превращается в крестик*/
+}
+
+.header_burger:before,
+.header_burger:after{/*рисуем меню бургер*/
+	content: '';
+	background-color: #fff;
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	left: 0;
+	transition: all 0.3s ease 0s;/*добавляет анимацию-бургер медленно превращается в крестик*/
+}
+
+.header_burger:before{/*верхняя полоса бургера*/
+   top: 0;
+}
+.header_burger:after{/*нижняя полоса бургера*/
+   bottom: 0;
+}
+
+.header_menu {/*оформление меню при размере меньше 767px*/
+	position: fixed;
+	top: -100%;/*меню прячется за плашку,пока не нажмешь на бургер*/
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;/*включает скрол, при горизонтальном положении можно будет добраться до всех пунктов меню */
+	transition: all 0.3s ease 0s;/*анимация меню(будет выезжать шторка с меню из плашки фиолет.)*/
+	background-color: #ffffff;
+	padding: 70px 10px 20px 10px;/*отступы меню*/
+   margin: 0 0px 0 0px;
+}
+
+.header_menu.active{
+	top: 0;/*меню появляется при нажатии на бургер*/
+}
+    /*при нажатии на бургер появляется крестик*/
+.header_burger.active span{
+   transform: scale(0);/*убираем среднюю палочку*/
+}
+
+.header_burger.active:before{/*делаем из бургера крестик*/
+	transform: rotate(45deg);
+	top: 9px;/*регулируем по высоте палочки, чтобы вышел крестик*/
+}
+.header_burger.active:after{/*делаем из бургера крестик*/
+	transform: rotate(-45deg);
+	bottom: 9px;/*регулируем по высоте палочки, чтобы вышел крестик*/
+}
+
+.header_list {/*меняем flex на block  строка с меню превращается в колонку*/
+  	display: block;
+  	text-align: center;
+}
+.header_list li{
+	margin: 0 0 0px 0;/*отступы между словами меню*/
+	margin-bottom: 50px;
+}
+.header_link{
+	font-size: 24px;/*увеличиваем шрифт меню*/
+	color:#000000 ;
+}
+
+.content{
+	padding: 60px 0 0 0;/*возвращаем не место уменьшенной плашки контент,какая плашка-такой отступ*/
+}
+}
+
+/*-------------------------------------------------------------------------------*/
+
+.hello {
+	background: url('../img/rectangle_2_copy_2671.png')0 0/cover no-repeat;
+	background-position: center;
+	padding: 138px 0 108px 0;
+}
+.container {}
+.hello_content {
+	text-align: center;
+}
+.hello_text {
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 47.1px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+}
+.hello_subtext {
+	background-image: linear-gradient(41.0deg, #dbdbdb 29%, #290a59 70%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 206.5px;
+	line-height: 1.2;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #15263e;
+}
+.hello_subtext2 {
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 118.6px;
+	line-height: 0.2;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.54em;
+	color: #ffffff;
+	margin-bottom: 50px;
+}
+.hello_subtext3 {
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 25.4px;
+	line-height: 43px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+	margin-bottom: 50px;
+}
+.hello_button {}
+.hello_btn {
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 18px;
+	line-height: 1.2;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+	padding: 27px 32px;
+	background-color: #ffffff;
+	background-image: linear-gradient(41.0deg, #dbdbdb 26%, #290a59 73%);
+}
+@media(max-width: 700px){
+.hello_text {
+	font-size: 37.1px;
+}	
+.hello_subtext {
+	font-size: 110px;
+}
+.hello_subtext2 {
+	font-size: 60px;
+}
+}
+
+/*----------------------------------------------------------*/
+
+.designer {
+	background: #ffffff;
+	padding: 140px 0 0 0;
+}
+.container {}
+.designer_columns {
+	display: flex;
+	flex: 0 1 100%;
+}
+.designer_column1 {
+	text-align: right;
+}
+.designer_column2 {
+}
+.designer_column3 {
+}
+.designer_name {
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 50px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #15263e;
+	margin-bottom: 24px;
+}
+.designer_profesional {
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 20px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #a21af0;
+	margin-bottom: 40px;
+}
+.designer_text {
+	font-family: 'Avant Garde CE';
+	font-size: 15px;
+	line-height: 30px;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #494949;
+}
+.designer_ittem {
+	text-align: center;
+}
+.designer_ittem li{
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 18px;
+	line-height: 1.2;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #4d4d4d;
+}
+.designer_ittem img{
+	margin: 17px 0 46px 0;
+}
+@media(max-width: 1200px){
+.designer_columns {
+	flex-direction: column;
+	text-align: center;
+}
+.designer_column2 {
+	margin-bottom: 50px;
+}
+}
+@media(max-width: 550px){
+.designer_column2 img{
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+}
+/*-------------------------------------------------*/
+
+.contact {
+	background-color: #dcdcde ;
+	padding: 100px 0 115px 0;
+}
+.container {}
+.contact_columns {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	flex: 0 1 100%;
+}
+.contact_column {
+	display: flex;
+	flex: 0 1 33.333%;
+	max-width: 333px;
+}
+.contact_img {
+	position: relative;
+	margin-right: 36px;
+}
+.contact_logo {
+	width: 100%;
+	margin: 0 center;
+	position: absolute;
+	top: 26px;
+   left: 29px;
+}
+.contact_content {}
+.contact_name {
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 18px;
+	line-height: 24px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #4d4d4d;
+	margin-bottom: 32px;
+}
+.contact_numer {
+	font-family: 'Avant Garde CE';
+	font-size: 18px;
+	line-height: 24px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #4d4d4d;
+}
+@media(max-width: 500px){
+.contact_columns {
+}	
+.contact_column {
+	width: 100%;
+	margin-bottom: 120px;
+}
+}
+/*-----------------------------------------------*/
+
+.services {
+	background-color: #000;
+	padding: 93px 0 160px 0;
+}
+.container {}
+.services_title {
+	text-align: center;
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 50px;
+	line-height: 113px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #15263e;
+	margin-bottom: 39px;
+}
+.services_subtitle {
+	text-align: center;
+	font-family: 'Avant Garde CE';
+	font-size: 18px;
+	line-height: 1.2;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #4d4d4d;
+	margin-bottom: 75px;
+}
+.services_columns {
+}
+.services_column_up {
+	display: flex;
+	margin-bottom: 90px;
+	align-items: center;
+}
+.services_column {
+	flex: 0 1 100%;
+	text-align: center;
+	max-width: 400px;
+	margin-right: 50px;
+}
+.services_column:last-child{
+	margin-right: 0;
+}
+.services_img {
+   position: relative;
+	margin-bottom: 35px;
+}
+.services_logo {
+	width: 100%;
+	margin: 0 auto;
+	position: absolute;
+	top: 38px;
+   left: 0;
+}
+.services_name {
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 25px;
+	line-height: 1.2;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #4d4d4d;
+	margin-bottom: 40px;
+}
+.services_text {
+	font-family: 'Avant Garde CE';
+	font-size: 15px;
+	line-height: 30px;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #494949;
+}
+.services_column_daun {
+	display: flex;
+	align-items: center;
+}
+
+@media(max-width: 1350px){
+.services_column_up {
+	flex-direction: column;
+}
+.services_column {
+	margin-right: 0;
+	margin-bottom: 80px;
+}
+.services_column:last-child {
+	margin-bottom: 0;
+}
+.services_column_daun {
+	flex-direction: column;
+}
+}
+/*----------------------------------------------------------------*/
+
+.testimonials {
+	background: url('../img/rectangle_3_copy_5_2710.png')0 0/cover no-repeat;
+	padding: 137px 0 213px 0;
+}
+.container {}
+.testimonials_title {
+	text-align: center;
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 50px;
+	line-height: 113px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+	margin-bottom: 100px;
+}
+.testimonials_content {
+	display: flex;
+	flex: 0 1 100%;
+}
+.testimonials_text:last_child{
+	margin-right: 0;
+}
+.testimonials_text {
+	flex: 0 1 50%;
+	text-align: right;
+	font-family: 'Avant Garde CE';
+	font-size: 15px;
+	line-height: 30px;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+	margin-right: 200px;
+}
+.testimonials_text:befor {
+
+}
+.testimonials_graphic {
+	display: flex;
+	flex: 0 1 50%;
+}
+.testimonials_graphic_ittem {
+	display: block;
+	margin-left: 30px;
+}
+.testimonials_graphic_name {
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 34.5px;
+	line-height: 1.2;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+}
+.testimonials_graphic_desiner {
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 15px;
+	line-height: 30px;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #c714d5;	
+}
+@media(max-width: 968px){
+.testimonials_content {
+	flex-direction: column;
+	align-items: center;
+}
+.testimonials_text {
+	margin-right: 0px;
+	margin-bottom: 80px;
+}
+}
+@media(max-width: 568px){
+.testimonials_title {
+	font-size: 35px;
+}
+.testimonials {
+	padding: 67px 0 113px 0;
+}
+}
+/*------------------------------------------------------*/
+
+.porfolio {
+	background-color: #ffffff;
+	padding: 96px 0 136px 0;
+}
+.container {}
+.porfolio_title {
+	text-align: center;
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 50px;
+	line-height: 113px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #15263e;
+	margin-bottom: 38px;
+}
+.porfolio_subtitle {
+	text-align: center;
+	font-family: 'Avant Garde CE';
+	font-size: 18px;
+	line-height: 1.2;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #4d4d4d;
+	margin-bottom: 72px;
+}
+.porfolio_content {
+	display: flex;
+	flex: 0 1 100%;
+}
+.porfolio_all {
+	flex: 0 1 20%;
+}
+.porfolio_all li{
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 22px;
+	line-height: 60px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #4d4d4d;
+	margin-bottom: 44px;
+}
+.porfolio_all li:hover{
+	color: #a91aef;
+}	
+   
+.porfolio_columns {
+	flex: 0 1 80%;
+}
+.porfolio_column {
+	display: flex;
+	margin-bottom: 30px;
+}
+.porfolio_column:last_child{
+	margin-bottom: 0;
+}
+.porfolio_img {
+	margin-right: 30px;
+}
+@media(max-width: 1160px){
+.porfolio_column {
+	flex-direction: column;
+	align-items: center;
+}
+.porfolio_img {
+	margin-bottom: 30px;
+}
+.porfolio_column {
+	margin-bottom: 0;
+}
+}
+@media(max-width: 667px){
+.porfolio_img img{
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+}
+@media(max-width: 568px){
+.porfolio_title {
+	font-size: 35px;
+}
+.porfolio {
+	padding: 67px 0 113px 0;
+}
+.porfolio_all li{
+	margin-bottom: 24px;
+}
+}	
+
+/*------------------------------------------------------------*/
+.experience {
+	background: url('../img/rectangle_3_copy_6_2741.png')0 0/cover no-repeat;
+	padding: 113px 0 133px 0;
+}
+.container {}
+.experience_title {
+	text-align: center;
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 50px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+	margin-bottom: 39px;
+}
+.experience_subtitle {
+	text-align: center;
+	font-family: 'Avant Garde CE';
+	font-size: 18px;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+	margin-bottom: 113px;
+}
+.experience_row {
+	justify-content: center;
+}
+.experience_column {
+	display: flex;
+	margin-bottom: 100px;
+
+}
+.experience1 {
+	display: flex;
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 25px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+	margin-bottom: 20px;
+}
+.experience2{
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 22px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+}
+
+
+.experience_personal1,.experience_personal3{
+	margin-right: 100px;
+	text-align: right;
+	
+}
+.experience_personal2,.experience_personal4{
+	text-align: left;
+}
+
+.experience_text1,.experience_text{
+	text-align: left;
+}
+.experience_text2,.experience_text4{
+	margin-right: 100px;
+	text-align: right;
+}
+.experience_text1,.experience_text2,.experience_text3,.experience_text4{
+	font-family: 'Avant Garde CE';
+	font-size: 15px;
+	line-height: 30px;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+	max-width: 800px;
+}
+@media(max-width: 1000px){
+.experience {
+	padding: 60px 0 60px 0;
+}
+}
+@media(max-width: 568px){
+.experience_title {
+	font-size: 35px;
+}
+}
+/*-----------------------------------------------------*/
+
+.blog {
+	background-color: #ffffff;
+	padding: 105px 0 86px 0;
+}
+.container {}
+.blog_title {
+	text-align: center;
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 50px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #15263e;
+	margin-bottom: 35px;
+}
+.blog_subtitle {
+	text-align: center;
+	font-family: 'Avant Garde CE';
+	font-size: 18px;
+	line-height: 1.2;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #4d4d4d;
+	margin-bottom: 80px;
+}
+.blog_columns {
+	display: flex;
+	flex: 0 1 100%;
+}
+.blog_column {
+	flex: 0 1 33.333%;
+}
+.blog_img {
+	margin-bottom: 40px;
+}
+.blog_personal {
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 15px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #929292;
+	margin-bottom: 20px;
+}
+.blog_computer {
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 20px;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #15263e;
+	margin-bottom: 28px;
+}
+.blog_text {
+	font-family: 'Avant Garde CE';
+	font-size: 15px;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #494949;
+	line-height: 20px;
+	max-width: 335px;
+}
+@media(max-width: 1180px){
+.blog_columns {
+	flex-direction: column;
+	align-items: center;
+}
+.blog_column {
+	margin-bottom: 80px;
+}
+.blog {
+	background-color: #ffffff;
+	padding: 55px 0 46px 0;
+}
+}
+@media(max-width: 568px){
+.blog_title {
+	font-size: 35px;
+}
+}
+@media(max-width: 420px){
+.blog_img img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}	
+}
+/*----------------------------------------------------------*/
+
+.message {
+	background: url('../img/rectangle_3_copy_7_2758.png')0 0/cover no-repeat;
+	padding: 72px 0 66px 0;
+}
+.container {}
+.message_tabl {
+	background-color:#15263e ;
+	padding: 80px 0 97px 0;
+}
+.message_title {
+	text-align: center;
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 50px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+	margin-bottom: 47px;
+}
+.message_subtitle {
+	text-align: center;
+	font-family: 'Avant Garde CE';
+	font-size: 18px;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+	margin-bottom: 77px;
+}
+.message_contact_up {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 24px;
+}
+.message_name {
+	margin-right: 24px;
+}
+.tabl1 {
+	width: 272px;
+	height: 57px;
+	font-family: 'Avant Garde CE';
+	font-size: 18px;
+	line-height: 1.2;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #777777;
+	padding-left: 30px;
+
+}
+.message_tel {
+	margin-right: 34px;
+}
+.tabl2 {
+	width: 272px;
+	height: 57px;
+	font-family: 'Avant Garde CE';
+	font-size: 18px;
+	line-height: 1.2;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #777777;
+	padding-left: 30px;
+}
+.message_e-mail {}
+.tabl3 {
+	width: 272px;
+	height: 57px;
+	font-family: 'Avant Garde CE';
+	font-size: 18px;
+	line-height: 1.2;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #777777;
+	padding-left: 30px;
+}
+.message_contact_daun {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 37px;
+}
+	
+.tabl4{
+	width: 872px;
+	height: 112px;
+	font-family: 'Avant Garde CE';
+	font-size: 18px;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #727272;
+	padding-left: 30px;
+	padding-bottom: 60px;
+	margin-bottom: 37px;
+}
+.message_button {
+	text-align: center;
+}
+.message_btn {
+	font-family: 'Avant Garde CE - Demi';
+	font-size: 18px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	color: #ffffff;
+	background-color: #ffffff;
+   background-image: linear-gradient(41.0deg, #dbdbdb 26%, #290a59 73%);
+   padding: 25px 30px;
+}
+@media(max-width: 920px){
+.message_contact_up {
+	flex-direction: column;
+	align-items: center;
+}
+.message_name {
+	margin-bottom: 24px;
+	margin-right: 0;
+}
+.message_tel {
+	margin-bottom: 24px;
+	margin-right: 0;
+}
+.tabl4{
+	width: 572px;
+	height: 112px;
+}
+}
+@media(max-width: 607px){
+.tabl4{
+	width: 272px;
+	height: 112px;
+}
+}
+@media(max-width: 568px){
+.message_title {
+	font-size: 35px;
+}
+}	
+/*---------------------------------------------------------*/
+.copyright {
+	background-color: #ffffff;
+	padding: 67px 0 95px 0;
+}
+.copyright_text {
+	text-align: center;
+	font-family: 'Times New Roman';
+	font-size: 15px;
+	line-height: 30px;
+	font-weight: 400;
+	letter-spacing: 0.075em;
+	color: #494949;
+}
+@media(max-width: 920px){
+	.copyright {
+	padding: 37px 0 45px 0;
+}
+}
